@@ -15,16 +15,16 @@ public readonly struct MultiString(string en, string de, string fr, string jp, s
     public readonly string German   = de;
     public readonly string French   = fr;
     public readonly string Japanese = jp;
-    public readonly string ChineseTraditional = tc;
+    public readonly string ChineseSimplified = tc;
 
     public string this[ClientLanguage lang]
         => Name(lang);
 
     public override string ToString()
-        => Name(ClientLanguage.ChineseTraditional);
+        => Name(ClientLanguage.ChineseSimplified);
 
     public string ToWholeString()
-        => $"{English}|{German}|{French}|{Japanese}|{ChineseTraditional}";
+        => $"{English}|{German}|{French}|{Japanese}|{ChineseSimplified}";
 
 
     public static MultiString FromPlaceName(IDataManager gameData, uint id)
@@ -33,7 +33,7 @@ public readonly struct MultiString(string en, string de, string fr, string jp, s
         var de = ParseSeStringLumina(gameData.GetExcelSheet<PlaceName>(ClientLanguage.German).GetRowOrDefault(id)?.Name);
         var fr = ParseSeStringLumina(gameData.GetExcelSheet<PlaceName>(ClientLanguage.French).GetRowOrDefault(id)?.Name);
         var jp = ParseSeStringLumina(gameData.GetExcelSheet<PlaceName>(ClientLanguage.Japanese).GetRowOrDefault(id)?.Name);
-        var tc = ParseSeStringLumina(gameData.GetExcelSheet<PlaceName>(ClientLanguage.ChineseTraditional).GetRowOrDefault(id)?.Name);
+        var tc = ParseSeStringLumina(gameData.GetExcelSheet<PlaceName>(ClientLanguage.ChineseSimplified).GetRowOrDefault(id)?.Name);
         return new MultiString(en, de, fr, jp, tc);
     }
 
@@ -43,7 +43,7 @@ public readonly struct MultiString(string en, string de, string fr, string jp, s
         var de = ParseSeStringLumina(gameData.GetExcelSheet<Item>(ClientLanguage.German).GetRowOrDefault(id)?.Name);
         var fr = ParseSeStringLumina(gameData.GetExcelSheet<Item>(ClientLanguage.French).GetRowOrDefault(id)?.Name);
         var jp = ParseSeStringLumina(gameData.GetExcelSheet<Item>(ClientLanguage.Japanese).GetRowOrDefault(id)?.Name);
-        var tc = ParseSeStringLumina(gameData.GetExcelSheet<Item>(ClientLanguage.ChineseTraditional).GetRowOrDefault(id)?.Name);
+        var tc = ParseSeStringLumina(gameData.GetExcelSheet<Item>(ClientLanguage.ChineseSimplified).GetRowOrDefault(id)?.Name);
         return new MultiString(en, de, fr, jp, tc);
     }
 
@@ -54,8 +54,8 @@ public readonly struct MultiString(string en, string de, string fr, string jp, s
             ClientLanguage.German             => German,
             ClientLanguage.Japanese           => Japanese,
             ClientLanguage.French             => French,
-            ClientLanguage.ChineseTraditional => ChineseTraditional,
-            _                       => throw new ArgumentException(),
+            ClientLanguage.ChineseSimplified => ChineseSimplified,
+            _                       => throw new ArgumentException($"Unknown language: {lang}"),
         };
 
     public static readonly MultiString Empty = new(string.Empty, string.Empty, string.Empty, string.Empty, string.Empty);

@@ -97,10 +97,11 @@ public partial class Interface
     {
         var lang = GatherBuddy.Language switch
         {
-            ClientLanguage.English  => "en",
-            ClientLanguage.German   => "de",
-            ClientLanguage.French   => "fr",
-            ClientLanguage.Japanese => "ja",
+            ClientLanguage.English            => "en",
+            ClientLanguage.German             => "de",
+            ClientLanguage.French             => "fr",
+            ClientLanguage.Japanese           => "ja",
+            ClientLanguage.ChineseSimplified =>  "tc",
             _                       => "en",
         };
 

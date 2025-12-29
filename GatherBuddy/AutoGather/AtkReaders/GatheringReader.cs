@@ -30,7 +30,7 @@ public unsafe class GatheringReader(AtkUnitBase* addon) : AtkReader(addon)
         => (ItemLevelRaw1 != 0 && ItemLevelRaw1 != 0xFFFFFFFF ? BinaryPrimitives.ReverseEndianness(ItemLevelRaw1) : BinaryPrimitives.ReverseEndianness(ItemLevelRaw2));
 
     private List<ItemSlotReader> ItemSlotReaders
-        => Loop<ItemSlotReader>(6, 11, 8);
+        => Loop<ItemSlotReader>(5, 11, 8);
 
     public List<ItemSlot> ItemSlots
     {
@@ -48,25 +48,25 @@ public unsafe class GatheringReader(AtkUnitBase* addon) : AtkReader(addon)
     }
 
     private uint ItemSlotFlags
-        => ReadUInt(99).GetValueOrDefault();
+        => ReadUInt(98).GetValueOrDefault();
 
     public bool QuickGatheringAllowed
-        => ReadBool(106).GetValueOrDefault();
+        => ReadBool(105).GetValueOrDefault();
 
     public bool QuickGatheringEnabled
-        => ReadBool(107).GetValueOrDefault();
+        => ReadBool(106).GetValueOrDefault();
 
     public bool QuickGatheringInProgress
-        => ReadBool(108).GetValueOrDefault();
+        => ReadBool(107).GetValueOrDefault();
 
     private uint LastSelectedSlot
-        => ReadUInt(109).GetValueOrDefault();
+        => ReadUInt(108).GetValueOrDefault();
 
     public int IntegrityRemaining
-        => (int)ReadUInt(110).GetValueOrDefault();
+        => (int)ReadUInt(109).GetValueOrDefault();
 
     public int IntegrityMax
-        => (int)ReadUInt(111).GetValueOrDefault();
+        => (int)ReadUInt(110).GetValueOrDefault();
 
     public bool Touched
         => IntegrityRemaining != IntegrityMax;
