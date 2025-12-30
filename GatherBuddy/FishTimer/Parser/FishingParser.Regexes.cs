@@ -66,7 +66,7 @@ public partial class FishingParser
             Cast = new Regex(@"在(?<FishingSpot>.+)甩出了魚線開始釣魚。", RegexOptions.Compiled),
             AreaDiscovered = new Regex(@"將新釣場「(?<FishingSpot>.+)」記錄到了釣魚筆記中！", RegexOptions.Compiled),
             Mooch = new Regex(@"開始利用上鉤的.+嘗試以小釣大。", RegexOptions.Compiled),
-            Undiscovered = "未發現的釣場",
+            Undiscovered = "未知釣場",
         });
 
         // @formatter:on
